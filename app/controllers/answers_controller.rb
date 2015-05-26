@@ -37,7 +37,35 @@ class AnswersController < ApplicationController
     end
   end 
 
-  
+  def upvote
+    answer = Answer.find(params[:id])
+    question = answer.question
+    answer.vote_count += 1
+    respond_to do |format|
+      if answer.save
+        format.html {redirect_to question_path(question)}
+        format.json {render json: answer}
+      else
+        format.html {render 'show'}
+        format.json {render json: @errors}
+      end
+    end
+  end
+
+  def downvote
+    answer = Answer.find(params[:id])
+    question = answer.question
+    answer.vote_count -= 1
+    respond_to do |format|
+      if answer.save
+        format.html {redirect_to question_path(question)}
+        format.json {render json: answer}
+      else
+        format.html {render 'show'}
+        format.json {render json: @errors}
+      end
+    end
+  end
 
   private
 
