@@ -7,20 +7,28 @@
 </div>
 
 <div class="row container-fluid">
-  <div class="col-med-12">
+  <div class="col-med-4">spacer</div>
     <%= render partial: 'form' ,  locals: {url: questions_path, method: :post}%>
-  </div>
 </div>
 
-<div>
+<div class="row container-fluid">
 <h2>Existing Questions</h2>
 <% @questions.each do |question|%>
-<div>
-  <li><%= link_to question.title, question_path(question)%>
-    Votes: <%= question.vote_count %>
+</div>
+<div class="row container-fluid">
+<div class="col-md-10">
+  <div class="col-md-2">Votes: <%= question.vote_count %>
     <%= button_to "Upvote", upvote_question_path(question)%>
     <%= button_to "Downvote", downvote_question_path(question)%>
-  </li>
-</div>
+    </div>
+
+  <div class="col-md-8"><%= link_to question.title, question_path(question)%></div>
+  
+
+  </div>
+  <div class="col-md-2">
+    put  a box of links here 
+  </div>
+
 <% end %>
 </div>

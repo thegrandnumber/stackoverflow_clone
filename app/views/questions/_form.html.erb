@@ -1,7 +1,13 @@
+<div class="col-md-12">
 <%= form_for :question, url: url, method: method do |f| %>
+<div class="col-md-6">
   <%= f.label "Title" %>
   <%= f.text_area :title %>
+  </div>
+  <div class="col-md-6">
   <%= f.label "Content" %>
   <%= f.text_area :content %>
   <%= f.submit %>
+  </div>
 <% end %>
+</div>
