@@ -13,8 +13,29 @@ class AnswersController < ApplicationController
         format.json {render json: @errors}
       end
     end
-    
   end
+
+  def edit
+    @answer = Answer.find(params[:id])
+    @question = Question.find(params[:question_id])
+  end
+
+  def update
+    question = Question.find(params[:question_id])
+    answer = Answer.find(params[:id])
+    answer.update(params_answers)
+    redirect_to question_path(question)
+  end 
+
+  def destroy
+    @question = Question.find(params[:question_id])
+    @answer = Answer.find(params[:id])
+    @answer.destroy
+    respond_to do |format|
+      format.html {redirect_to @question}
+      format.json { render json: @answer}
+    end
+  end 
 
   
 
