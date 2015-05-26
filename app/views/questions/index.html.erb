@@ -1,0 +1,9 @@
+
+<h2>New Question</h2>
+<%= render partial: 'form' %>
+<h2>Existing Questions</h2>
+<% @questions.each do |question|%>
+<div>
+  <li><%= link_to question.title, question_path(question)%></li>
+</div>
+<% end %>
