@@ -1,6 +1,6 @@
 
 <h2>New Question</h2>
-<%= render partial: 'form' %>
+<%= render partial: 'form' ,  locals: {url: questions_path, method: :post}%>
 <h2>Existing Questions</h2>
 <% @questions.each do |question|%>
 <div>
