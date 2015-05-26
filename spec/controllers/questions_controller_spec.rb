@@ -114,7 +114,7 @@ RSpec.describe QuestionsController, type: :controller do
     it "adds a vote to the vote count" do
     post :upvote, id: @question
     @question.reload
-    expect(@question.vote).to eq(1)
+    expect(@question.vote_count).to eq(1)
     end
 
     it "redirects to the question page" do
@@ -132,7 +132,7 @@ RSpec.describe QuestionsController, type: :controller do
     post :upvote, id: @question
     post :downvote, id: @question
     @question.reload
-    expect(@question.vote).to eq(1)
+    expect(@question.vote_count).to eq(1)
     end
     it "redirects to the question page" do
     post :downvote, id: @question
