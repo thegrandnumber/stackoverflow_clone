@@ -7,9 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="row container-fluid header">
+  <div class="col-md-2">logo here</div>
+  <div class="col-md-1">spacer</div>
+  <div class="col-md-2">tabs here</div>
+  <div class="col-md-2">tabs here</div>
+  <div class="col-md-2">tabs here</div>
+  <div class="col-md-3">search bar</div>
+</div>
+
 <div class="row container-fluid">
+  <div class="col-md-2">logo goes here</div>
   <div class="col-md-8"><h1>Welcome to a StackOverflow Clone</h1></div>
-  <div class="col-md-4"><%=link_to "Home", root_path %></div>
+  <div class="col-md-2 pad-20"><%=link_to "Home", root_path %></div>
 </div>
   
   <%= yield %>
