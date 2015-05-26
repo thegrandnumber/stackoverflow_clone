@@ -15,8 +15,11 @@
     <li>
       <%= answer.title %>:
       <%= answer.content%>
+      Votes: <%= answer.vote_count %>
       <%= link_to 'Delete Answer', question_answer_path(answer.question, answer), method: :delete%>
       <%= link_to 'Edit Answer', edit_question_answer_path(@question, answer), method: :get%>
+      <%= button_to 'upvote', upvote_question_answer_path(@question, answer) %>
+      <%= button_to 'downvote', downvote_question_answer_path(@question, answer) %>
     </li>
   </div>
   <% end %>

@@ -106,6 +106,38 @@ RSpec.describe QuestionsController, type: :controller do
     end
   end
 
-  
+  describe 'POST #upvote' do
+    before(:each) do
+      @question = FactoryGirl.create(:question)
+    end
+
+    it "adds a vote to the vote count" do
+    post :upvote, id: @question
+    @question.reload
+    expect(@question.vote_count).to eq(1)
+    end
+
+    it "redirects to the question page" do
+    post :upvote, id: @question
+    expect(response).to redirect_to(questions_url)
+    end
+  end
+
+  describe 'POST #downvote' do
+    before(:each) do
+      @question = FactoryGirl.create(:question)
+    end
+    it "adds a vote to the vote count" do
+    post :upvote, id: @question
+    post :upvote, id: @question
+    post :downvote, id: @question
+    @question.reload
+    expect(@question.vote_count).to eq(1)
+    end
+    it "redirects to the question page" do
+    post :downvote, id: @question
+    expect(response).to redirect_to(questions_url)
+    end
+  end
 
 end
