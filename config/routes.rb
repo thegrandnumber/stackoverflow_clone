@@ -3,7 +3,16 @@ Rails.application.routes.draw do
 
   
     resources :questions do 
-      resources :answers, :only => [:create, :edit, :destroy, :update] 
+      member do 
+        post 'upvote'
+        post 'downvote'
+      end 
+      resources :answers do 
+        member do 
+          post 'upvote'
+          post 'downvote'
+        end 
+      end 
     end 
 
   # Example resource route with options:
