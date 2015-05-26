@@ -1,26 +1,48 @@
-<h2>The key question is: <%= @question.title %></h2>
-<h3><%= @question.content %></h3>
-<%= link_to 'Delete Question', question_path(@question), method: :delete%>
+<div class=" row container-fluid">
+  <div class="col-md-2">
+    count & up/down vote
+  </div>
+  <div class="col-md-6">
+    <h2>Question: <span><h4><%= @question.title %></h4></span></h2>
+  </div>
+  <div class="col-md-2">
+    <%= link_to 'Delete Question', question_path(@question), method: :delete%>
+  </div>
+  <div class="col-md-2">
+    <%= link_to 'Edit Question', edit_question_path(@question)%>
+  </div>
+</div>
+<div class="row container-fluid">
+  <div class="col-md-2">
+    something
+  </div>
+  <div class="col-md-6">
+    <h3><%= @question.content %></h3>
+  </div>
+  <div class="col-md-4">
+    some links
+  </div>
+</div>
+<div class="row container-fluid">
+  <div class="col-md-2"> links</div>
+  <div class="col-md-6"><h2>Create a new answer:</h2>
+  <%= render partial: 'form' ,  locals: {url: question_answers_path(@question), method: :post}%></div>
+  <div class="col-md-2">link</div>
+</div>
 
-<%= link_to 'Edit Question', edit_question_path(@question)%>
-
-
-<h1>Answers:</h1>
-<h2>New Answer</h2>
-<%= render partial: 'answers/form', locals: {url: question_answers_path(@question), method: :post} %>
-<h2>Answers below:</h2>
-<ul>
   <% @question.answers.each do |answer| %>
-  <div>
-    <li>
-      <%= answer.title %>:
-      <%= answer.content%>
-      Votes: <%= answer.vote_count %>
-      <%= link_to 'Delete Answer', question_answer_path(answer.question, answer), method: :delete%>
-      <%= link_to 'Edit Answer', edit_question_answer_path(@question, answer), method: :get%>
-      <%= button_to 'upvote', upvote_question_answer_path(@question, answer) %>
-      <%= button_to 'downvote', downvote_question_answer_path(@question, answer) %>
-    </li>
+<div class="row container-fluid">
+  <div class="col-md-2">Votes: <%= answer.vote_count %>
+  <%= button_to 'upvote', upvote_question_answer_path(@question, answer) %>
+  <%= button_to 'downvote', downvote_question_answer_path(@question, answer) %></div>
+
+  <div class="col-md-6">Answer - <%= answer.title %>:
+  <%= answer.content%>
+  </div>
+
+  <div class="col-md-2"> 
+  <%= link_to 'Delete Answer', question_answer_path(answer.question, answer), method: :delete%>
+  <%= link_to 'Edit Answer', edit_question_answer_path(@question, answer), method: :get%>
+  </div>
   </div>
   <% end %>
-</ul>
