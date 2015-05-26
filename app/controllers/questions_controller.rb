@@ -1,13 +1,13 @@
 class QuestionsController < ApplicationController
 
   def index
-    @questions = Question.all
+    @questions = Question.order('created_at DESC')
     @question = Question.new
   end
 
   def show
     @question = Question.find(params[:id])
-    @answers = @question.answers
+    @answers = @question.answers.order('created_at DESC')
   end
 
   def create
