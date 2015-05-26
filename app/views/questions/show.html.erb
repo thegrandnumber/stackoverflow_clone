@@ -1,0 +1,17 @@
+<h2>The key question is: <%= @question.title %></h2>
+<h3><%= @question.content %></h3>
+<%= link_to 'Delete Question', question_path(@question), method: :delete, data: {confirm: "you want to delete ME!?"} %>
+
+<%= link_to 'Edit Question', edit_question_path(@question)%>
+
+<h2>Answers below:</h2>
+<ul>
+  <% @question.answers.each do |answer| %>
+  <div>
+    <li>
+      <%= answer.title %>
+      <%= answer.content%>
+    </li>
+  </div>
+  <% end %>
+</ul>
