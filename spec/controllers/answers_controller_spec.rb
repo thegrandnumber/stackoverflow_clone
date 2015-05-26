@@ -16,4 +16,32 @@ RSpec.describe AnswersController, type: :controller do
       expect(Answer.last.title).to eq("Testing answer")
     end
   end
+
+  describe 'PUT #update' do
+    it "should update the answer" do
+      put :update, question_id: @question.id, id: @answer.id, answer: {title: "Updated Testing answer", content: "tested answer"}
+      expect(Answer.find(@answer.id).title).to eq("Updated Testing answer")
+    end
+  end
+
+  describe 'DELETE #destroy' do
+    before(:each) do
+      @question = FactoryGirl.create(:question)
+      @answer = FactoryGirl.create(:answer)
+      @question.answers << @answer
+    end
+
+    it "deletes the question" do
+      expect{
+      delete :destroy, id: @answer, question_id: @question}.to change(Answer, :count).by(-1)
+    end
+
+    it 'redirects to question show page' do
+      delete :destroy, id: @answer, question_id: @question
+      expect(response).to redirect_to question_url(@question)
+    end
+  end
+
+
+
 end
