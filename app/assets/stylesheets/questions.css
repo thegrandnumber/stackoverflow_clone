@@ -1,0 +1,16 @@
+* {
+  border: red 1px solid;
+}
+.pad-20 {
+  padding: 20px;
+}
+
+.header {
+  background-color: black;
+  color: white;
+}
+
+.quote {
+  font-style: italic;
+  font-weight: lighter;
+}
