@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(params_question)
-    @error = question.errors.full_messages.to_sentence
+    @error = @question.errors.full_messages.to_sentence
     respond_to do |format|
       if @question.save
         format.html {redirect_to question_path(@question)}

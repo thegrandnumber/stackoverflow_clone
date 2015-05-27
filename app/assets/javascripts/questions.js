@@ -1,7 +1,7 @@
 $(document).ready(function() {
     var bindEvents = function() {
         $('#new_Q form').on('click', 'input[type="submit"]', submitNewQuestion);
-        $('.button_to').on('click', 'input[type="submit"]', runVote);
+        $('body').on('click', '.button_to input[type="submit"]', runVote);
     };
 
     var submitNewQuestion = function(event) {
