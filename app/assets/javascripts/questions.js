@@ -23,11 +23,12 @@ $(document).ready(function() {
         })
         .fail(function(response) {
           console.log("error", response);
-          // renderErrors(response);
+          renderErrors(response);
         });
     };
 
     var rendernewQuestion = function(response){
+      $('#errors').html('');
        var html = $('#new-question-form').html();
         var generateNewQuestionForm = Handlebars.compile(html);
         $('#questions_box').append(generateNewQuestionForm(response));
@@ -36,16 +37,14 @@ $(document).ready(function() {
     var clearForm = function(){
     $('#question_title').val('');
     $('#question_content').val('');
-     $('#answer_title').val('');
+    $('#answer_title').val('');
     $('#answer_content').val('');
     };
 
-    // var renderErrors = function(response){
-    //   console.log("error");
-    //   console.log(response.responseText);
-    //   $('#errors').val('');
-    //   $('#errors').val(response[responseText]);
-    // };
+    var renderErrors = function(response){
+      $('#errors').html('');
+      $('#errors').append('<h5 class="error">Questions must have a valid title & content</h5>');
+    };
 
     var runVote = function(event){
       event.preventDefault();
