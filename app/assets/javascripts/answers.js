@@ -16,6 +16,7 @@ var createNewAnswer = function(event) {
      })
      .done(function(response) {
        renderNewAnswer(response);
+       clearAnswerForm();
      })
      .fail(function(response) {
        renderAerrors(response);
@@ -24,6 +25,15 @@ var createNewAnswer = function(event) {
 
     var renderNewAnswer = function(response){
       console.log("success", response);
+      // ('#errors').html('');
+       var html = $('#new-answer').html();
+        var generateNewAnswerForm = Handlebars.compile(html);
+        $('#answers_box').prepend(generateNewAnswerForm(response));
+    };
+
+    var clearAnswerForm = function(){
+      $('#answer_title').val('');
+      $('#answer_content').val('');
     };
 
     var renderAerrors = function(response){

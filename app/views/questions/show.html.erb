@@ -30,9 +30,11 @@
   <div class="col-md-2">link</div>
 </div>
 
+<div id="answers_box"> 
   <% @question.answers.each do |answer| %>
-<div class="row container-fluid">
-  <div class="col-md-2">Votes: <%= answer.vote_count %>
+<div class="row container-fluid " id = "id_<%=answer.id%>">
+
+  <div class="col-md-2 vote_count"><span>Votes: <%= answer.vote_count %></span>
   <%= button_to 'upvote', upvote_question_answer_path(@question, answer) %>
   <%= button_to 'downvote', downvote_question_answer_path(@question, answer) %></div>
 
@@ -40,26 +42,29 @@
   <%= answer.content%>
   </div>
 
-  <div class="col-md-2"> 
+  <div class="col-md-4"> 
   <%= link_to 'Delete Answer', question_answer_path(answer.question, answer), method: :delete%>
   <%= link_to 'Edit Answer', edit_question_answer_path(@question, answer), method: :get%>
   </div>
   </div>
   <% end %>
-
-
-<script type="text/x-handlebars" data-template-name="new-answer">
-    <div class="row container-fluid">
-  <div class="col-md-2">Votes: {{vote_count}}
-  <form class="button_to" method="post" action="/questions/{{question_id}}/answers/{{id}}/upvote"><input type="submit" value="upvote"></form>
-  <form class="button_to" method="post" action="/questions/{{question_id}}/answers/{{id}}/downvote"><input type="submit" value="downvote"></form></div>
-
-  <div class="col-md-6">Answer - {{title}}:
-  {{content}}
   </div>
 
-  <div class="col-md-2"> 
-  <a rel="nofollow" data-method="delete" href="/questions/{{question_id}}/answers/{{id}}">Delete Answer</a>
+
+<script type="text/x-handlebars" id="new-answer">
+
+  <div class="row container-fluid" id = "id_{{id}}">
+
+  <div class="col-md-2 vote_count"> <span>Votes: {{vote_count}}</span>
+  <form class="button_to" method="post" action="/questions/{{question_id}}/answers/{{id}}/upvote"><input type="submit" value="upvote"></form>
+  <form class="button_to" method="post" action="/questions/{{question_id}}/answers/{{id}}/downvote"><input type="submit" value="downvote"></form>
+  </div>
+
+  <div class="col-md-6" >Answer - {{title}}: {{content}}
+  </div>
+
+  <div class="col-md-4"> 
+  <a data-method="delete" href="/questions/{{question_id}}/answers/{{id}}">Delete Answer</a>
   <a data-method="get" href="/questions/{{question_id}}/answers/{{id}}/edit">Edit Answer</a>
   </div>
   </div>

@@ -37,8 +37,7 @@ $(document).ready(function() {
     var clearForm = function(){
     $('#question_title').val('');
     $('#question_content').val('');
-    $('#answer_title').val('');
-    $('#answer_content').val('');
+    
     };
 
     var renderErrors = function(response){
@@ -66,8 +65,8 @@ $(document).ready(function() {
     };
 
     var renderNewVotes= function(response){
-      var Qid = response.id;
-      $('#id_'+Qid+' .vote_count span').text('Votes: '+response.vote_count+'');
+      var id = response.id;
+      $('#id_'+id+' .vote_count span').text('Votes: '+response.vote_count+'');
     };
 
 
