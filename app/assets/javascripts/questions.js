@@ -36,6 +36,8 @@ $(document).ready(function() {
     var clearForm = function(){
     $('#question_title').val('');
     $('#question_content').val('');
+     $('#answer_title').val('');
+    $('#answer_content').val('');
     };
 
     // var renderErrors = function(response){
