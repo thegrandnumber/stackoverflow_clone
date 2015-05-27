@@ -1,6 +1,6 @@
-* {
+/** {
   border: red 1px solid;
-}
+}*/
 
 *{
   padding: 2px;
@@ -21,7 +21,7 @@
 }
 
 .blk-bord {
-  border: black 1px solid;
+  border-bottom: black 1px solid;
 }
 
 .error {
@@ -34,7 +34,8 @@ h1:before {
   content:url('/assets/logo.png')
 }
 
-#logo:before{
- content:url('/assets/logo.png') 
- max-height: 70%;
+
+
+.vote_count {
+  text-align: center;
 }
