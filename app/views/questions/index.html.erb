@@ -1,13 +1,12 @@
 <div class="row container-fluid">
-  <h4>Inpsiring quote for today: <span class="quote"><%= @quote %></span></h4>
+  <h4>Inspiring quote for today: <span class="quote"><%= @quote %></span></h4>
 </div>
 
 <div class="row container-fluid">
   <div class="col-med-12"><h2>New Question</h2></div>
 </div>
 
-<div class="row container-fluid">
-  <div class="col-med-4">spacer</div>
+<div class="row container-fluid" id="new_Q">
     <%= render partial: 'form' ,  locals: {url: questions_path, method: :post}%>
 </div>
 

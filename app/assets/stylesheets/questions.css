@@ -1,6 +1,11 @@
-* {
+/** {
   border: red 1px solid;
+}*/
+
+*{
+  padding: 2px;
 }
+
 .pad-20 {
   padding: 20px;
 }

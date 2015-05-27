@@ -1,4 +1,10 @@
-<div class="col-md-12">
+<div class="container error">
+  <% if @error %>
+    <%= @error %>
+  <% end %>
+</div>
+
+<div class="row container-fluid">
 <%= form_for :question, url: url, method: method do |f| %>
 <div class="col-md-6">
   <%= f.label "Title" %>
