@@ -25,7 +25,7 @@
 </div>
 <div class="row container-fluid">
   <div class="col-md-2"> links</div>
-  <div class="col-md-6"><h2>Create a new answer:</h2>
+  <div class="col-md-6 new_A"><h2>Create a new answer:</h2>
   <%= render partial: 'answers/form' ,  locals: {url: question_answers_path(@question), method: :post}%></div>
   <div class="col-md-2">link</div>
 </div>
@@ -46,3 +46,21 @@
   </div>
   </div>
   <% end %>
+
+
+<script type="text/x-handlebars" data-template-name="new-answer">
+    <div class="row container-fluid">
+  <div class="col-md-2">Votes: {{vote_count}}
+  <form class="button_to" method="post" action="/questions/{{question_id}}/answers/{{id}}/upvote"><input type="submit" value="upvote"></form>
+  <form class="button_to" method="post" action="/questions/{{question_id}}/answers/{{id}}/downvote"><input type="submit" value="downvote"></form></div>
+
+  <div class="col-md-6">Answer - {{title}}:
+  {{content}}
+  </div>
+
+  <div class="col-md-2"> 
+  <a rel="nofollow" data-method="delete" href="/questions/{{question_id}}/answers/{{id}}">Delete Answer</a>
+  <a data-method="get" href="/questions/{{question_id}}/answers/{{id}}/edit">Edit Answer</a>
+  </div>
+  </div>
+</script>

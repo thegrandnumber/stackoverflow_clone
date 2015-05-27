@@ -1,16 +1,18 @@
 class AnswersController < ApplicationController
 
     def create
-    question = Question.find(params[:question_id])
-    answer = question.answers.new(params_answers)
+    @question = Question.find(params[:question_id])
+    @answer = @question.answers.new(params_answers)
+    @errors = @answer.errors.full_messages.to_sentence
+
 
     respond_to do |format|
-      if answer.save
-        format.html {redirect_to question_path(question)}
-        format.json {render json: answer}
+      if @answer.save
+        format.html {redirect_to question_path(@question)}
+        format.json {render json: @answer}
       else
         format.html {render 'show'}
-        format.json {render json: @errors}
+        format.json {render json: @errors, status: :unprocessable_entity }
       end
     end
   end
