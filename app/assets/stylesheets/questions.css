@@ -23,3 +23,9 @@
 .blk-bord {
   border: black 1px solid;
 }
+
+.error {
+  color: red;
+  font-style: italic;
+  font-weight: lighter;
+}
