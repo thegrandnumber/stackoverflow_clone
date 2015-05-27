@@ -1,19 +1,15 @@
-<div class="container error" id="errors">
-  <% if @error %>
-    <%= @error %>
-  <% end %>
-</div>
 
-<div class="row container-fluid">
+
+
 <%= form_for :question, url: url, method: method do |f| %>
-<div class="col-md-6">
+<div class="col-md-6 blk-bord">
   <%= f.label "Title" %>
   <%= f.text_area :title %>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-6 blk-bord">
   <%= f.label "Content" %>
   <%= f.text_area :content %>
   <%= f.submit %>
   </div>
 <% end %>
-</div>
+

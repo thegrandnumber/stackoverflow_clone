@@ -66,7 +66,7 @@ $(document).ready(function() {
 
     var renderNewVotes= function(response){
       var id = response.id;
-      $('#id_'+id+' .vote_count span').text('Votes: '+response.vote_count+'');
+      $('#id_'+id+' .vote_count span').text(''+response.vote_count+'');
     };
 
 
