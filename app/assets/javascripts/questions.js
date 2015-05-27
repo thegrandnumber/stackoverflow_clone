@@ -1,6 +1,7 @@
 $(document).ready(function() {
     var bindEvents = function() {
         $('#new_Q form').on('click', 'input[type="submit"]', submitNewQuestion);
+        $('.button_to').on('click', 'input[type="submit"]', runVote);
     };
 
     var submitNewQuestion = function(event) {
@@ -43,6 +44,30 @@ $(document).ready(function() {
     //   $('#errors').val('');
     //   $('#errors').val(response[responseText]);
     // };
+
+    var runVote = function(event){
+      event.preventDefault();
+      // console.log($(this).parent().attr("action"));
+      // console.log($(this).attr("value"));
+      var $url = $(this).parent().attr("action");
+      $.ajax({
+        url: $url,
+        type: 'POST',
+        dataType: 'json'
+      })
+      .done(function(response) {
+        console.log("success", response, response.vote_count);
+        renderNewVotes(response);
+      })
+      .fail(function(response) {
+        console.log("error", response);
+      });
+    };
+
+    var renderNewVotes= function(response){
+      var Qid = response.id;
+      $('#id_'+Qid+' .vote_count span').text('Votes: '+response.vote_count+'');
+    };
 
 
 // At runtime: 
