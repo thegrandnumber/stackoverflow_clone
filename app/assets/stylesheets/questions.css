@@ -19,3 +19,7 @@
   font-style: italic;
   font-weight: lighter;
 }
+
+.blk-bord {
+  border: black 1px solid;
+}
