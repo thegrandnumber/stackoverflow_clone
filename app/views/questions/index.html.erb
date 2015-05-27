@@ -1,34 +1,44 @@
 <div class="row container-fluid">
-  <h4>Inpsiring quote for today: <span class="quote"><%= @quote %></span></h4>
+  <h4>Inspiring quote for today: <span class="quote"><%= @quote %></span></h4>
 </div>
-
 <div class="row container-fluid">
   <div class="col-med-12"><h2>New Question</h2></div>
 </div>
-
-<div class="row container-fluid">
-  <div class="col-med-4">spacer</div>
-    <%= render partial: 'form' ,  locals: {url: questions_path, method: :post}%>
+<div class="row container-fluid" id="new_Q">
+  <%= render partial: 'form' ,  locals: {url: questions_path, method: :post}%>
 </div>
-
-<div class="row container-fluid">
-<h2>Existing Questions</h2>
-<% @questions.each do |question|%>
+<div class="row container-fluid" id="questions_box">
+  <h2>Existing Questions</h2>
+  <% @questions.each do |question|%>
 </div>
-<div class="row container-fluid">
-<div class="col-md-10">
-  <div class="col-md-2">Votes: <%= question.vote_count %>
-    <%= button_to "Upvote", upvote_question_path(question)%>
-    <%= button_to "Downvote", downvote_question_path(question)%>
+<div class="row container-fluid blk-bord" id="id_<%=question.id%>">
+  <div class="col-md-10">
+    <div class="col-md-2 vote_count"> <span>Votes: <%= question.vote_count %></span>
+      <%= button_to "Upvote", upvote_question_path(question)%>
+      <%= button_to "Downvote", downvote_question_path(question)%>
     </div>
-
-  <div class="col-md-8"><%= link_to question.title, question_path(question)%></div>
-  
-
+    <div class="col-md-8"><%= link_to question.title, question_path(question)%></div>
+    
   </div>
   <div class="col-md-2">
-    put  a box of links here 
+    put  a box of links here
   </div>
-
 <% end %>
 </div>
+
+<script id="new-question-form" type="text/x-handlebars-template">
+<div class="row container-fluid" id="id_{{id}}">
+  <div class="col-md-10">
+    <div class="col-md-2 vote_count"> <span> Votes: {{vote_count}}</span>
+      <form class="button_to" method="post" action="/questions/{{id}}/upvote"><input type="submit" value="Upvote"></form>
+      <form class="button_to" method="post" action="/questions/{{id}}/downvote"><input type="submit" value="Downvote"></form>
+    </div>
+    <div class="col-md-8"><a href="/questions/{{id}}">{{title}}</a>
+    </div>
+    
+  </div>
+  <div class="col-md-2">
+    put  a box of links here
+  </div>
+</div>
+</script>

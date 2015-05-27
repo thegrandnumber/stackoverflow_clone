@@ -13,14 +13,14 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(params_question)
+    @error = @question.errors.full_messages.to_sentence
     respond_to do |format|
       if @question.save
         format.html {redirect_to question_path(@question)}
         format.json {render json: @question}
       else
-
         format.html {render 'index'}
-        format.json {render json: @errors}
+        format.json {render json: @error, status: :unprocessable_entity }
       end
     end
   end
