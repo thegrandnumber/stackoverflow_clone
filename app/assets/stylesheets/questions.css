@@ -29,3 +29,12 @@
   font-style: italic;
   font-weight: lighter;
 }
+
+h1:before {
+  content:url('/assets/logo.png')
+}
+
+#logo:before{
+ content:url('/assets/logo.png') 
+ max-height: 70%;
+}
