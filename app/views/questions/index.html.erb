@@ -41,18 +41,20 @@
 <script id="new-question-form" type="text/x-handlebars-template">
 <div class="row container-fluid" id="id_{{id}}">
  <div class="col-md-1"></div>
-  <div class="col-md-9">
-    <div class="col-md-2 vote_count">
-      <form class="button_to" method="post" action="/questions/{{id}}/upvote"><input type="submit" value="+"></form>
+  <div class="col-md-9 blk-bord">
+    <div class="col-md-1 vote_count">
+      <form class="button_to" method="post" action="/questions/{{id}}/upvote"><input type="submit" value='▲'></form>
       <span>{{vote_count}}</span>
-      <form class="button_to" method="post" action="/questions/{{id}}/downvote"><input type="submit" value="-"></form>
+      <form class="button_to" method="post" action="/questions/{{id}}/downvote"><input type="submit" value= "▼"></form>
     </div>
-    <div class="col-md-8"><a href="/questions/{{id}}">{{title}}</a>
+    <div class="col-md-6"><a href="/questions/{{id}}">{{title}}</a>
+  </div>
+ <div class="col-md-3"><a data-method="delete" href="/questions/{{id}}">Delete Question</a>
+    <a data-method="get" href="/questions/{{id}}/edit">Edit Question</a></div>
   </div>
   
 </div>
 <div class="col-md-2">
-  put  a box of links here
 </div>
 </div>
 </script>

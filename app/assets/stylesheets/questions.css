@@ -30,6 +30,17 @@
   font-weight: lighter;
 }
 
+.bottom {
+  display: inline-block;
+  vertical-align: text-bottom;
+}
+
+.center {
+  text-align: center;
+  /*display: table-cell;*/
+  /*vertical-align: bottom;*/
+}
+
 h1:before {
   content:url('/assets/logo.png')
 }
